@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
+    <meta name="description" content="POS - Bootstrap Admin Template" />
+    <meta name="keywords"
+        content="admin, estimates, bootstrap, business, corporate, creative, invoice, html5, responsive, Projects" />
+    <meta name="author" content="Dreamguys - Bootstrap Admin Template" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Dreams Pos admin template</title>
+
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png" />
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="assets/css/animate.css" />
+
+    <link rel="stylesheet" href="assets/plugins/select2/css/select2.min.css" />
+
+    <link rel="stylesheet" href="assets/css/dataTables.bootstrap4.min.css" />
+
+    <link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css" />
+    <link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css" />
+
+    <link rel="stylesheet" href="assets/css/style.css" />
+
+    <style>
+        /* Định dạng tổng quan cho thẻ 'losanpham' */
+        .losanpham {
+            margin: 20px 0;
+            padding: 15px;
+        }
+
+        /* Tiêu đề trong 'losanpham' */
+        .losanpham a {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            text-decoration: none;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        /* Định dạng cho 'thongtinlosanpham' */
+        .thongtinlosanpham {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        /* Định dạng cho 'danhsachsanpham' */
+        .sanpham {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f5f5f5;
+        }
+        .sanpham{
+            margin-bottom: 5px ;
+        }
+        /* Định dạng từng sản phẩm trong 'danhsachsanpham' */
+        
+        /* Căn chỉnh cột và form */
+        .thongtinlosanpham .col-lg-3,
+        .thongtinlosanpham .col-sm-6,
+        .thongtinlosanpham .col-12 {
+            flex: 1 1 22%;
+            /* Điều chỉnh kích thước cột */
+            min-width: 200px;
+            /* Đảm bảo không bị nhỏ hơn */
+        }
+
+        .thongtinlosanpham .col-lg-12 {
+            flex: 1 1 100%;
+        }
+
+        /* Định dạng chung cho form-group */
+        .thongtinlosanpham .form-group {
+            margin-bottom: 15px;
+        }
+
+        .thongtinlosanpham .form-group label {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 5px;
+            display: block;
+            color: #555;
+        }
+
+        .thongtinlosanpham .form-group input,
+        .thongtinlosanpham .form-group select,
+        .thongtinlosanpham .form-group textarea {
+            width: 100%;
+            padding: 8px 10px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="global-loader">
+        <div class="whirly-loader"></div>
+    </div>
+
+    <div class="main-wrapper">
+        <div class="header">
+            <div class="header-left active">
+                <a href="index.html" class="logo">
+                    <img src="assets/img/main-logo.png" style="width: 100%" alt="" />
+                </a>
+                <a href="index.html" class="logo-small">
+                    <img src="assets/img/logo-small.png" alt="" />
+                </a>
+                <a id="toggle_btn" href="javascript:void(0);"> </a>
+            </div>
+
+            <a id="mobile_btn" class="mobile_btn" href="#sidebar">
+                <span class="bar-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+            </a>
+
+            <ul class="nav user-menu">
+                <li class="nav-item">
+                    <div class="top-nav-search">
+                        <a href="javascript:void(0);" class="responsive-search">
+                            <i class="fa fa-search"></i>
+                        </a>
+                        <form action="#">
+                            <div class="searchinputs">
+                                <input type="text" placeholder="Search Here ..." />
+                                <div class="search-addon">
+                                    <span><img src="assets/img/icons/closes.svg" alt="img" /></span>
+                                </div>
+                            </div>
+                            <a class="btn" id="searchdiv"><img src="assets/img/icons/search.svg" alt="img" /></a>
+                        </form>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown has-arrow flag-nav">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="javascript:void(0);"
+                        role="button">
+                        <img src="assets/img/flags/us1.png" alt="" height="20" />
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a href="javascript:void(0);" class="dropdown-item">
+                            <img src="assets/img/flags/us.png" alt="" height="16" /> English
+                        </a>
+                        <a href="javascript:void(0);" class="dropdown-item">
+                            <img src="assets/img/flags/fr.png" alt="" height="16" /> French
+                        </a>
+                        <a href="javascript:void(0);" class="dropdown-item">
+                            <img src="assets/img/flags/es.png" alt="" height="16" /> Spanish
+                        </a>
+                        <a href="javascript:void(0);" class="dropdown-item">
+                            <img src="assets/img/flags/de.png" alt="" height="16" /> German
+                        </a>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a href="javascript:void(0);" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
+                        <img src="assets/img/icons/notification-bing.svg" alt="img" />
+                        <span class="badge rounded-pill">4</span>
+                    </a>
+                    <div class="dropdown-menu notifications">
+                        <div class="topnav-dropdown-header">
+                            <span class="notification-title">Notifications</span>
+                            <a href="javascript:void(0)" class="clear-noti"> Clear All </a>
+                        </div>
+                        <div class="noti-content">
+                            <ul class="notification-list">
+                                <li class="notification-message">
+                                    <a href="activities.html">
+                                        <div class="media d-flex">
+                                            <span class="avatar flex-shrink-0">
+                                                <img alt="" src="assets/img/profiles/avatar-02.jpg" />
+                                            </span>
+                                            <div class="media-body flex-grow-1">
+                                                <p class="noti-details">
+                                                    <span class="noti-title">John Doe</span> added new
+                                                    task
+                                                    <span class="noti-title">Patient appointment booking</span>
+                                                </p>
+                                                <p class="noti-time">
+                                                    <span class="notification-time">4 mins ago</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="notification-message">
+                                    <a href="activities.html">
+                                        <div class="media d-flex">
+                                            <span class="avatar flex-shrink-0">
+                                                <img alt="" src="assets/img/profiles/avatar-03.jpg" />
+                                            </span>
+                                            <div class="media-body flex-grow-1">
+                                                <p class="noti-details">
+                                                    <span class="noti-title">Tarah Shropshire</span>
+                                                    changed the task name
+                                                    <span class="noti-title">Appointment booking with payment
+                                                        gateway</span>
+                                                </p>
+                                                <p class="noti-time">
+                                                    <span class="notification-time">6 mins ago</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="notification-message">
+                                    <a href="activities.html">
+                                        <div class="media d-flex">
+                                            <span class="avatar flex-shrink-0">
+                                                <img alt="" src="assets/img/profiles/avatar-06.jpg" />
+                                            </span>
+                                            <div class="media-body flex-grow-1">
+                                                <p class="noti-details">
+                                                    <span class="noti-title">Misty Tison</span> added
+                                                    <span class="noti-title">Domenic Houston</span> and
+                                                    <span class="noti-title">Claire Mapes</span> to
+                                                    project
+                                                    <span class="noti-title">Doctor available module</span>
+                                                </p>
+                                                <p class="noti-time">
+                                                    <span class="notification-time">8 mins ago</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="notification-message">
+                                    <a href="activities.html">
+                                        <div class="media d-flex">
+                                            <span class="avatar flex-shrink-0">
+                                                <img alt="" src="assets/img/profiles/avatar-17.jpg" />
+                                            </span>
+                                            <div class="media-body flex-grow-1">
+                                                <p class="noti-details">
+                                                    <span class="noti-title">Rolland Webber</span>
+                                                    completed task
+                                                    <span class="noti-title">Patient and Doctor video
+                                                        conferencing</span>
+                                                </p>
+                                                <p class="noti-time">
+                                                    <span class="notification-time">12 mins ago</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="notification-message">
+                                    <a href="activities.html">
+                                        <div class="media d-flex">
+                                            <span class="avatar flex-shrink-0">
+                                                <img alt="" src="assets/img/profiles/avatar-13.jpg" />
+                                            </span>
+                                            <div class="media-body flex-grow-1">
+                                                <p class="noti-details">
+                                                    <span class="noti-title">Bernardo Galaviz</span>
+                                                    added new task
+                                                    <span class="noti-title">Private chat module</span>
+                                                </p>
+                                                <p class="noti-time">
+                                                    <span class="notification-time">2 days ago</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="topnav-dropdown-footer">
+                            <a href="activities.html">View all Notifications</a>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown has-arrow main-drop">
+                    <a href="javascript:void(0);" class="dropdown-toggle nav-link userset" data-bs-toggle="dropdown">
+                        <span class="user-img"><img src="assets/img/profiles/avator1.jpg" alt="" />
+                            <span class="status online"></span></span>
+                    </a>
+                    <div class="dropdown-menu menu-drop-user">
+                        <div class="profilename">
+                            <div class="profileset">
+                                <span class="user-img"><img src="assets/img/profiles/avator1.jpg" alt="" />
+                                    <span class="status online"></span></span>
+                                <div class="profilesets">
+                                    <h6>John Doe</h6>
+                                    <h5>Admin</h5>
+                                </div>
+                            </div>
+                            <hr class="m-0" />
+                            <a class="dropdown-item" href="profile.html">
+                                <i class="me-2" data-feather="user"></i> My Profile</a>
+                            <a class="dropdown-item" href="generalsettings.html"><i class="me-2"
+                                    data-feather="settings"></i>Settings</a>
+                            <hr class="m-0" />
+                            <a class="dropdown-item logout pb-0" href="signin.html"><img
+                                    src="assets/img/icons/log-out.svg" class="me-2" alt="img" />Logout</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="dropdown mobile-user-menu">
+                <a href="javascript:void(0);" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
+                    aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item" href="profile.html">My Profile</a>
+                    <a class="dropdown-item" href="generalsettings.html">Settings</a>
+                    <a class="dropdown-item" href="signin.html">Logout</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-inner slimscroll">
+                <div id="sidebar-menu" class="sidebar-menu">
+                    <ul>
+                        <li class="active">
+                            <a href="index.html"><img src="assets/img/icons/dashboard.svg" alt="img"><span>
+                                    Trang chủ</span> </a>
+                        </li>
+                        <li class="submenu">
+                            <a href="javascript:void(0);"><img src="assets/img/icons/product.svg" alt="img"><span> Nhập
+                                    kho</span> <span class="menu-arrow"></span></a>
+                            <ul>
+                                <li><a href="#">Thêm phiếu nhập</a></li>
+                                <li><a href="#">Duyệt phiếu nhập</a></li>
+                                <li><a href="#">Lịch sử phiếu nhập</a></li>
+                            </ul>
+                        </li>
+                        <li class="submenu">
+                            <a href="javascript:void(0);"><img src="assets/img/icons/product.svg" alt="img"><span> Xuất kho
+                                    </span> <span class="menu-arrow"></span></a>
+                            <ul>
+                                <li><a href="#">Thêm phiếu xuất</a></li>
+                                <li><a href="#">Duyệt phiếu nhập</a></li>
+                                <li><a href="#">Lịch sử phiếu xuất</a></li>
+                            </ul>
+                        </li>
+                        <li class="submenu">
+                            <a href="javascript:void(0);"><img src="assets/img/icons/product.svg" alt="img"><span> Thông báo / Cảnh báo
+                                    </span> <span class="menu-arrow"></span></a>
+                            <ul>
+                                <li><a href="#">Thông báo</a></li>
+                                <li><a href="expired_noti.html">Cảnh báo</a></li>
+                            </ul>
+                        </li>
+                        <li class="submenu">
+                            <a href="javascript:void(0);"><img src="assets/img/icons/product.svg" alt="img"><span> Báo cáo
+                                    </span> <span class="menu-arrow"></span></a>
+                            <ul>
+                                <li><a href="list_product.html">Hàng hóa hết hạn</a></li>
+                                <li><a href="list_product.html">Hàng hóa sắp hết hạn</a></li>
+                            </ul>
+                        </li>
+                        <li class="submenu">
+                            <a href="javascript:void(0);"><img src="assets/img/icons/users1.svg" alt="img"><span>
+                                    Quản lý hàng hóa</span> <span class="menu-arrow"></span></a>
+                            <ul>
+                                <li><a href="list_product.html">Cập nhật hàng hóa</a></li>
+                                <li><a href="maitainance.html">Bảo Trì Vật Tư</a></li>
+                            </ul>
+                        </li>
+                        <li class="submenu">
+                            <a href="javascript:void(0);"><img src="assets/img/icons/users1.svg" alt="img"><span>
+                                    Quản lý tài khoản</span> <span class="menu-arrow"></span></a>
+                            <ul>
+                                <li><a href="list_account.html">Danh sách nhân viên</a></li>
+                                <li><a id="add-account" href="add_account.html"> Tạo mới nhân viên </a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-wrapper">
+            <div class="content">
+                <div class="page-header">
+                    <div class="page-title">
+                        <h4>Thêm Sản Phẩm</h4>
+                        <h6>Create new product</h6>
+                    </div>
+                </div>
+        
+                <div class="card">
+                    <div class="card-body">
+                        <div class="losanpham">
+                            <a>Nhập thông tin Lô Sản Phẩm xuất:</a>
+                            <div class="thongtinlosanpham">
+                                <div class="col-lg-3 col-sm-6 col-12">
+                                    <div class="form-group">
+                                        <label>Người tạo đơn</label>
+                                        <input type="text" id="nguoiTaoDon" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-sm-6 col-12">
+                                    <div class="form-group">
+                                        <label>Khách hàng :</label>
+                                        <input type="text" id="nhaPhanPhoi" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-sm-6 col-12">
+                                    <div class="form-group">
+                                        <label>Ngày tạo :</label>
+                                        <input type="date" id="ngayNhap" />
+                                    </div>
+                                </div>
+                            </div>
+                            <a>Danh sách sản phẩm : </a>
+                            <div class="danhsachsanpham">
+                                <!-- Danh sách sản phẩm sẽ được thêm tại đây -->
+                            </div>
+                            <div class="col-lg-12">
+                                <!-- Nút thêm sản phẩm -->
+                                <a href="javascript:void(0);" onclick="themsanpham()" class="btn btn-submit me-2">Thêm Sản Phẩm</a>
+                                <a href="javascript:void(0);" onclick="xacnhan()" class="btn btn-submit">Xác nhận</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            // Hàm xử lý nút "Huỷ"
+            function huysanpham(button) {
+                const sanpham = button.closest(".sanpham");
+                if (sanpham) {
+                    sanpham.remove();
+                }
+            }
+        
+            // Hàm xử lý nút "Thêm Sản Phẩm"
+            function themsanpham() {
+                const danhsachsanpham = document.querySelector(".danhsachsanpham");
+                const sanphamHTML = `
+                    <div class="sanpham row">
+                        <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label>Tên Sản Phẩm</label>
+                                <input type="text" class="tenSanPham" />
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label>Loại Sản Phẩm</label>
+                                <select class="loaiSanPham">
+                                    <option>Thiết bị y tế</option>
+                                    <option>Dược Phẩm</option>
+                                    <option>Khác</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label>Số Lượng</label>
+                                <input type="text" class="soLuong" />
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label>Ngày Sản Xuất</label>
+                                <input type="date" class="ngaySanXuat" />
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label>Hạn Sử Dụng</label>
+                                <input type="date" class="hanSuDung" />
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label>Giá</label>
+                                <input type="text" class="gia" />
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <a href="javascript:void(0);" onclick="huysanpham(this)" class="btn btn-cancel">Huỷ</a>
+                        </div>
+                    </div>
+                `;
+                danhsachsanpham.insertAdjacentHTML('beforeend', sanphamHTML);
+            }
+        
+            // Hàm xử lý nút "Xác nhận"
+            function xacnhan() {
+                // Lấy thông tin lô sản phẩm
+                const nguoiTaoDon = $("#nguoiTaoDon").val();
+                const nhaPhanPhoi = $("#nhaPhanPhoi").val();
+                const ngayNhap = $("#ngayNhap").val();
+        
+                // Lấy danh sách sản phẩm
+                const sanphamData = [];
+                $(".danhsachsanpham .sanpham").each(function () {
+                    const tenSanPham = $(this).find(".tenSanPham").val();
+                    const loaiSanPham = $(this).find(".loaiSanPham").val();
+                    const soLuong = $(this).find(".soLuong").val();
+                    const ngaySanXuat = $(this).find(".ngaySanXuat").val();
+                    const hanSuDung = $(this).find(".hanSuDung").val();
+                    const gia = $(this).find(".gia").val();
+        
+                    sanphamData.push({
+                        tenSanPham,
+                        loaiSanPham,
+                        soLuong,
+                        ngaySanXuat,
+                        hanSuDung,
+                        gia,
+                    });
+                });
+        
+                // Gửi dữ liệu bằng AJAX
+                $.ajax({
+                    url: "/xu-ly-du-lieu", // Đường dẫn xử lý trên server
+                    method: "POST",
+                    data: {
+                        nguoiTaoDon,
+                        nhaPhanPhoi,
+                        ngayNhap,
+                        sanphamData,
+                    },
+                    success: function (response) {
+                        alert("Dữ liệu đã được gửi thành công!");
+                        console.log(response);
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Đã xảy ra lỗi trong quá trình gửi dữ liệu.");
+                        console.error(error);
+                    },
+                });
+            }
+        </script>
+        
+    <script src="assets/js/jquery-3.6.0.min.js"></script>
+
+    <script src="assets/js/feather.min.js"></script>
+
+    <script src="assets/js/jquery.slimscroll.min.js"></script>
+
+    <script src="assets/js/jquery.dataTables.min.js"></script>
+    <script src="assets/js/dataTables.bootstrap4.min.js"></script>
+
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+
+    <script src="assets/plugins/select2/js/select2.min.js"></script>
+
+    <script src="assets/plugins/sweetalert/sweetalert2.all.min.js"></script>
+    <script src="assets/plugins/sweetalert/sweetalerts.min.js"></script>
+
+    <script src="assets/js/script.js"></script>
+</body>
+
+</html>
