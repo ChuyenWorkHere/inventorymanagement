@@ -11,12 +11,13 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "hanghoa")
+@ToString
 public class Product {
 
     @Id
     @Column(name = "product_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int productId;
+    private Integer productId;
 
     @Column(name = "name")
     private String name;

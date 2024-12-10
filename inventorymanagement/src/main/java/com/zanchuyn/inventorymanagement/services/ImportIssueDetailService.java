@@ -1,5 +1,6 @@
 package com.zanchuyn.inventorymanagement.services;
 
+import com.zanchuyn.inventorymanagement.dtos.ImportIssueDetailDto;
 import com.zanchuyn.inventorymanagement.dtos.ProductDto;
 import com.zanchuyn.inventorymanagement.dtos.request.ProductRequest;
 import com.zanchuyn.inventorymanagement.entities.ImportIssue;
@@ -46,4 +47,10 @@ public class ImportIssueDetailService {
         return importIssueDetailRepository.saveAll(issueDetails);
     }
 
+    public List<ImportIssueDetailDto> findAllImportDetailByIssueId(Integer id) {
+        List<ImportIssueDetail> importIssueDetails = importIssueDetailRepository.findAllByIssue_receiptId(id);
+        return importIssueDetails.stream()
+                .map(item -> mapper.map(item, ImportIssueDetailDto.class))
+                .toList();
+    }
 }

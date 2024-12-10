@@ -209,7 +209,7 @@
                             </div>
                         </div>
                         <hr class="m-0">
-                        <a class="dropdown-item" href="../../../../../../../Zalo%20Received%20Files/xemchitiet.html"> <i
+                        <a class="dropdown-item" href="account_detail.html"> <i
                                 class="me-2" data-feather="user"></i> My
                             Profile</a>
                         <a class="dropdown-item" href="generalsettings.html"><i class="me-2"
@@ -227,7 +227,7 @@
             <a href="javascript:void(0);" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
                aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
             <div class="dropdown-menu dropdown-menu-right">
-                <a class="dropdown-item" href="../../../../../../../Zalo%20Received%20Files/xemchitiet.html">My
+                <a class="dropdown-item" href="account_detail.html">My
                     Profile</a>
                 <a class="dropdown-item" href="generalsettings.html">Settings</a>
                 <a class="dropdown-item" href="signin.html">Logout</a>
@@ -241,7 +241,7 @@
         <div class="sidebar-inner slimscroll">
             <div id="sidebar-menu" class="sidebar-menu">
                 <ul>
-                    <li class="active">
+                    <li class="">
                         <a href="index.html"><img src="assets/img/icons/dashboard.svg" alt="img"><span>
                                     Trang chủ</span> </a>
                     </li>
@@ -249,34 +249,18 @@
                         <a href="javascript:void(0);"><img src="assets/img/icons/product.svg" alt="img"><span> Nhập
                                     kho</span> <span class="menu-arrow"></span></a>
                         <ul>
-                            <li><a href="#">Thêm phiếu nhập</a></li>
-                            <li><a href="#">Duyệt phiếu nhập</a></li>
-                            <li><a href="#">Lịch sử phiếu nhập</a></li>
+                            <li><a href="import_issue.html">Thêm phiếu nhập</a></li>
+                            <li><a href="accept_import.html">Duyệt phiếu nhập</a></li>
+                            <li><a href="historic_import.html">Lịch sử phiếu nhập</a></li>
                         </ul>
                     </li>
                     <li class="submenu">
                         <a href="javascript:void(0);"><img src="assets/img/icons/product.svg" alt="img"><span> Xuất kho
                                     </span> <span class="menu-arrow"></span></a>
                         <ul>
-                            <li><a href="#">Thêm phiếu xuất</a></li>
-                            <li><a href="#">Duyệt phiếu nhập</a></li>
-                            <li><a href="#">Lịch sử phiếu xuất</a></li>
-                        </ul>
-                    </li>
-                    <li class="submenu">
-                        <a href="javascript:void(0);"><img src="assets/img/icons/product.svg" alt="img"><span> Thông báo / Cảnh báo
-                                    </span> <span class="menu-arrow"></span></a>
-                        <ul>
-                            <li><a href="#">Thông báo</a></li>
-                            <li><a href="expired_noti.html">Cảnh báo</a></li>
-                        </ul>
-                    </li>
-                    <li class="submenu">
-                        <a href="javascript:void(0);"><img src="assets/img/icons/product.svg" alt="img"><span> Báo cáo
-                                    </span> <span class="menu-arrow"></span></a>
-                        <ul>
-                            <li><a href="list_product.html">Hàng hóa hết hạn</a></li>
-                            <li><a href="list_product.html">Hàng hóa sắp hết hạn</a></li>
+                            <li><a href="export_issue.html">Thêm phiếu xuất</a></li>
+                            <li><a href="accept_import.html">Duyệt phiếu xuất</a></li>
+                            <li><a href="historic_export.html">Lịch sử phiếu xuất</a></li>
                         </ul>
                     </li>
                     <li class="submenu">
@@ -288,11 +272,12 @@
                         </ul>
                     </li>
                     <li class="submenu">
-                        <a href="javascript:void(0);"><img src="assets/img/icons/users1.svg" alt="img"><span>
+                        <a class="active" href="javascript:void(0);"><img src="assets/img/icons/users1.svg"
+                                                                          alt="img"><span>
                                     Quản lý tài khoản</span> <span class="menu-arrow"></span></a>
                         <ul>
                             <li><a href="list_account.html">Danh sách nhân viên</a></li>
-                            <li><a id="add-account" href="add_account.html"> Tạo mới nhân viên </a></li>
+                            <li><a class="active" id="add-account" href="add_account.html"> Tạo mới nhân viên </a></li>
                         </ul>
                     </li>
                 </ul>

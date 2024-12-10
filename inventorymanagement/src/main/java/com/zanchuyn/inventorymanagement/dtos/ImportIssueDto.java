@@ -4,6 +4,7 @@ import com.zanchuyn.inventorymanagement.entities.User;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Getter
 @Setter
@@ -22,4 +23,6 @@ public class ImportIssueDto {
     private String status;
 
     private User user;
+
+    private List<ImportIssueDetailDto> importIssueDetailList;
 }
