@@ -27,13 +27,24 @@ public class ProductController {
     private ImportIssueDetailService detailService;
 
     @ResponseBody
-    @GetMapping("/")
+    @GetMapping("/all/")
     public ResponseEntity<?> getAllProduct(HttpSession session) {
         User currentUser = (User) session.getAttribute("user");
         if (currentUser == null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("/auth/");
         } else {
             return ResponseEntity.ok(detailService.findAllDetailByStatusAndProductId("SUCCESS"));
+        }
+    }
+
+    @ResponseBody
+    @GetMapping("/")
+    public ResponseEntity<?> getProducts(HttpSession session) {
+        User currentUser = (User) session.getAttribute("user");
+        if (currentUser == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("/auth/");
+        } else {
+            return ResponseEntity.ok(detailService.findAllProductByStatus("SUCCESS"));
         }
     }
 
