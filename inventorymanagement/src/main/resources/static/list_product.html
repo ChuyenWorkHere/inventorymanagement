@@ -23,7 +23,7 @@
 
     <link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
     <link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
@@ -338,42 +338,27 @@
                                         <div class="col-lg col-sm-6 col-12">
                                             <div class="form-group">
                                                 <select class="select">
-                                                    <option>Choose Product</option>
-                                                    <option>Macbook pro</option>
-                                                    <option>Orange</option>
+                                                    <option value="">Loại</option>
+                                                    <option value="1">Vật tư</option>
+                                                    <option value="2">Dược phẩm</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="col-lg col-sm-6 col-12">
                                             <div class="form-group">
                                                 <select class="select">
-                                                    <option>Choose Category</option>
-                                                    <option>Computers</option>
-                                                    <option>Fruits</option>
+                                                    <option value="">Tình trạng</option>
+                                                    <option value="good">Tốt</option>
+                                                    <option value="expired">Sắp hết hạn</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="col-lg col-sm-6 col-12">
                                             <div class="form-group">
                                                 <select class="select">
-                                                    <option>Choose Sub Category</option>
-                                                    <option>Computer</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg col-sm-6 col-12">
-                                            <div class="form-group">
-                                                <select class="select">
-                                                    <option>Brand</option>
-                                                    <option>N/D</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg col-sm-6 col-12 ">
-                                            <div class="form-group">
-                                                <select class="select">
-                                                    <option>Price</option>
-                                                    <option>150.00</option>
+                                                    <option value="">Ngày nhập</option>
+                                                    <option value="new">Mới nhất</option>
+                                                    <option value="old">Cũ nhất</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -390,378 +375,30 @@
                     </div>
 
                     <div class="table-responsive">
-                        <table class="table  datanew">
+                        <table class="table datanew">
                             <thead>
                             <tr>
-                                <th>
-                                    <label class="checkboxs">
-                                        <input type="checkbox" id="select-all">
-                                        <span class="checkmarks"></span>
-                                    </label>
-                                </th>
-                                <th>Product Name</th>
-                                <th>SKU</th>
-                                <th>Category</th>
-                                <th>Brand</th>
-                                <th>price</th>
-                                <th>Unit</th>
-                                <th>Qty</th>
-                                <th>Created By</th>
-                                <th>Action</th>
+                                <th>ID</th>
+                                <th>Tên</th>
+                                <th>Loại</th>
+                                <th>Mô tả</th>
+                                <th>Đơn vị</th>
+                                <th>Mã lô hàng</th>
+                                <th>Ngày nhập</th>
+                                <th>Hạn sử dụng</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr>
-                                <td>
-                                    <label class="checkboxs">
-                                        <input type="checkbox">
-                                        <span class="checkmarks"></span>
-                                    </label>
-                                </td>
-                                <td class="productimgname">
-                                    <a href="javascript:void(0);" class="product-img">
-                                        <img src="assets/img/product/product1.jpg" alt="product">
-                                    </a>
-                                    <a href="javascript:void(0);">Macbook pro</a>
-                                </td>
                                 <td>PT001</td>
-                                <td>Computers</td>
-                                <td>N/D</td>
-                                <td>1500.00</td>
-                                <td>pc</td>
+                                <td>Paracetamol</td>
+                                <td>Dược phẩm</td>
+                                <td>Hộp</td>
+                                <td>12</td>
                                 <td>100.00</td>
                                 <td>Admin</td>
-                                <td>
-                                    <a class="me-3" href="product-details.html">
-                                        <img src="assets/img/icons/eye.svg" alt="img">
-                                    </a>
-                                    <a class="me-3" href="editproduct.html">
-                                        <img src="assets/img/icons/edit.svg" alt="img">
-                                    </a>
-                                    <a class="confirm-text" href="javascript:void(0);">
-                                        <img src="assets/img/icons/delete.svg" alt="img">
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label class="checkboxs">
-                                        <input type="checkbox">
-                                        <span class="checkmarks"></span>
-                                    </label>
-                                </td>
-                                <td class="productimgname">
-                                    <a href="javascript:void(0);" class="product-img">
-                                        <img src="assets/img/product/product2.jpg" alt="product">
-                                    </a>
-                                    <a href="javascript:void(0);">Orange</a>
-                                </td>
-                                <td>PT002</td>
-                                <td>Fruits</td>
-                                <td>N/D</td>
-                                <td>10.00</td>
-                                <td>pc</td>
-                                <td>100.00</td>
                                 <td>Admin</td>
-                                <td>
-                                    <a class="me-3" href="product-details.html">
-                                        <img src="assets/img/icons/eye.svg" alt="img">
-                                    </a>
-                                    <a class="me-3" href="editproduct.html">
-                                        <img src="assets/img/icons/edit.svg" alt="img">
-                                    </a>
-                                    <a class="confirm-text" href="javascript:void(0);">
-                                        <img src="assets/img/icons/delete.svg" alt="img">
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label class="checkboxs">
-                                        <input type="checkbox">
-                                        <span class="checkmarks"></span>
-                                    </label>
-                                </td>
-                                <td class="productimgname">
-                                    <a href="javascript:void(0);" class="product-img">
-                                        <img src="assets/img/product/product3.jpg" alt="product">
-                                    </a>
-                                    <a href="javascript:void(0);">Pineapple</a>
-                                </td>
-                                <td>PT003</td>
-                                <td>Fruits</td>
-                                <td>N/D</td>
-                                <td>10.00</td>
-                                <td>pc</td>
-                                <td>100.00</td>
-                                <td>Admin</td>
-                                <td>
-                                    <a class="me-3" href="product-details.html">
-                                        <img src="assets/img/icons/eye.svg" alt="img">
-                                    </a>
-                                    <a class="me-3" href="editproduct.html">
-                                        <img src="assets/img/icons/edit.svg" alt="img">
-                                    </a>
-                                    <a class="confirm-text" href="javascript:void(0);">
-                                        <img src="assets/img/icons/delete.svg" alt="img">
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label class="checkboxs">
-                                        <input type="checkbox">
-                                        <span class="checkmarks"></span>
-                                    </label>
-                                </td>
-                                <td class="productimgname">
-                                    <a href="javascript:void(0);" class="product-img">
-                                        <img src="assets/img/product/product4.jpg" alt="product">
-                                    </a>
-                                    <a href="javascript:void(0);">Strawberry</a>
-                                </td>
-                                <td>PT004</td>
-                                <td>Fruits</td>
-                                <td>N/D</td>
-                                <td>10.00</td>
-                                <td>pc</td>
-                                <td>100.00</td>
-                                <td>Admin</td>
-                                <td>
-                                    <a class="me-3" href="product-details.html">
-                                        <img src="assets/img/icons/eye.svg" alt="img">
-                                    </a>
-                                    <a class="me-3" href="editproduct.html">
-                                        <img src="assets/img/icons/edit.svg" alt="img">
-                                    </a>
-                                    <a class="confirm-text" href="javascript:void(0);">
-                                        <img src="assets/img/icons/delete.svg" alt="img">
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label class="checkboxs">
-                                        <input type="checkbox">
-                                        <span class="checkmarks"></span>
-                                    </label>
-                                </td>
-                                <td class="productimgname">
-                                    <a href="javascript:void(0);" class="product-img">
-                                        <img src="assets/img/product/product5.jpg" alt="product">
-                                    </a>
-                                    <a href="javascript:void(0);">Avocat</a>
-                                </td>
-                                <td>PT005</td>
-                                <td>Accessories</td>
-                                <td>N/D</td>
-                                <td>10.00</td>
-                                <td>pc</td>
-                                <td>150.00</td>
-                                <td>Admin</td>
-                                <td>
-                                    <a class="me-3" href="product-details.html">
-                                        <img src="assets/img/icons/eye.svg" alt="img">
-                                    </a>
-                                    <a class="me-3" href="editproduct.html">
-                                        <img src="assets/img/icons/edit.svg" alt="img">
-                                    </a>
-                                    <a class="confirm-text" href="javascript:void(0);">
-                                        <img src="assets/img/icons/delete.svg" alt="img">
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label class="checkboxs">
-                                        <input type="checkbox">
-                                        <span class="checkmarks"></span>
-                                    </label>
-                                </td>
-                                <td class="productimgname">
-                                    <a href="javascript:void(0);" class="product-img">
-                                        <img src="assets/img/product/product6.jpg" alt="product">
-                                    </a>
-                                    <a href="javascript:void(0);">Macbook Pro</a>
-                                </td>
-                                <td>PT006</td>
-                                <td>Shoes</td>
-                                <td>N/D</td>
-                                <td>10.00</td>
-                                <td>pc</td>
-                                <td>100.00</td>
-                                <td>Admin</td>
-                                <td>
-                                    <a class="me-3" href="product-details.html">
-                                        <img src="assets/img/icons/eye.svg" alt="img">
-                                    </a>
-                                    <a class="me-3" href="editproduct.html">
-                                        <img src="assets/img/icons/edit.svg" alt="img">
-                                    </a>
-                                    <a class="confirm-text" href="javascript:void(0);">
-                                        <img src="assets/img/icons/delete.svg" alt="img">
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label class="checkboxs">
-                                        <input type="checkbox">
-                                        <span class="checkmarks"></span>
-                                    </label>
-                                </td>
-                                <td class="productimgname">
-                                    <a href="javascript:void(0);" class="product-img">
-                                        <img src="assets/img/product/product7.jpg" alt="product">
-                                    </a>
-                                    <a href="javascript:void(0);">Apple Earpods</a>
-                                </td>
-                                <td>PT007</td>
-                                <td>Shoes</td>
-                                <td>N/D</td>
-                                <td>10.00</td>
-                                <td>pc</td>
-                                <td>100.00</td>
-                                <td>Admin</td>
-                                <td>
-                                    <a class="me-3" href="product-details.html">
-                                        <img src="assets/img/icons/eye.svg" alt="img">
-                                    </a>
-                                    <a class="me-3" href="editproduct.html">
-                                        <img src="assets/img/icons/edit.svg" alt="img">
-                                    </a>
-                                    <a class="confirm-text" href="javascript:void(0);">
-                                        <img src="assets/img/icons/delete.svg" alt="img">
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label class="checkboxs">
-                                        <input type="checkbox">
-                                        <span class="checkmarks"></span>
-                                    </label>
-                                </td>
-                                <td class="productimgname">
-                                    <a href="javascript:void(0);" class="product-img">
-                                        <img src="assets/img/product/product8.jpg" alt="product">
-                                    </a>
-                                    <a href="javascript:void(0);">iPhone 11 </a>
-                                </td>
-                                <td>PT008</td>
-                                <td>Fruits</td>
-                                <td>N/D</td>
-                                <td>10.00</td>
-                                <td>pc</td>
-                                <td>100.00</td>
-                                <td>Admin</td>
-                                <td>
-                                    <a class="me-3" href="product-details.html">
-                                        <img src="assets/img/icons/eye.svg" alt="img">
-                                    </a>
-                                    <a class="me-3" href="editproduct.html">
-                                        <img src="assets/img/icons/edit.svg" alt="img">
-                                    </a>
-                                    <a class="confirm-text" href="javascript:void(0);">
-                                        <img src="assets/img/icons/delete.svg" alt="img">
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label class="checkboxs">
-                                        <input type="checkbox">
-                                        <span class="checkmarks"></span>
-                                    </label>
-                                </td>
-                                <td class="productimgname">
-                                    <a href="javascript:void(0);" class="product-img">
-                                        <img src="assets/img/product/product9.jpg" alt="product">
-                                    </a>
-                                    <a href="javascript:void(0);">samsung </a>
-                                </td>
-                                <td>PT009</td>
-                                <td>Earphones</td>
-                                <td>N/D</td>
-                                <td>10.00</td>
-                                <td>pc</td>
-                                <td>100.00</td>
-                                <td>Admin</td>
-                                <td>
-                                    <a class="me-3" href="product-details.html">
-                                        <img src="assets/img/icons/eye.svg" alt="img">
-                                    </a>
-                                    <a class="me-3" href="editproduct.html">
-                                        <img src="assets/img/icons/edit.svg" alt="img">
-                                    </a>
-                                    <a class="confirm-text" href="javascript:void(0);">
-                                        <img src="assets/img/icons/delete.svg" alt="img">
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label class="checkboxs">
-                                        <input type="checkbox">
-                                        <span class="checkmarks"></span>
-                                    </label>
-                                </td>
-                                <td class="productimgname">
-                                    <a href="javascript:void(0);" class="product-img">
-                                        <img src="assets/img/product/product11.jpg" alt="product">
-                                    </a>
-                                    <a href="javascript:void(0);">Banana</a>
-                                </td>
-                                <td>PT0010</td>
-                                <td>Health Care</td>
-                                <td>N/D</td>
-                                <td>10.00</td>
-                                <td>kg</td>
-                                <td>100.00</td>
-                                <td>Admin</td>
-                                <td>
-                                    <a class="me-3" href="product-details.html">
-                                        <img src="assets/img/icons/eye.svg" alt="img">
-                                    </a>
-                                    <a class="me-3" href="editproduct.html">
-                                        <img src="assets/img/icons/edit.svg" alt="img">
-                                    </a>
-                                    <a class="confirm-text" href="javascript:void(0);">
-                                        <img src="assets/img/icons/delete.svg" alt="img">
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label class="checkboxs">
-                                        <input type="checkbox">
-                                        <span class="checkmarks"></span>
-                                    </label>
-                                </td>
-                                <td class="productimgname">
-                                    <a href="javascript:void(0);" class="product-img">
-                                        <img src="assets/img/product/product17.jpg" alt="product">
-                                    </a>
-                                    <a href="javascript:void(0);">Limon</a>
-                                </td>
-                                <td>PT0011</td>
-                                <td>Health Care</td>
-                                <td>N/D</td>
-                                <td>10.00</td>
-                                <td>kg</td>
-                                <td>100.00</td>
-                                <td>Admin</td>
-                                <td>
-                                    <a class="me-3" href="product-details.html">
-                                        <img src="assets/img/icons/eye.svg" alt="img">
-                                    </a>
-                                    <a class="me-3" href="editproduct.html">
-                                        <img src="assets/img/icons/edit.svg" alt="img">
-                                    </a>
-                                    <a class="confirm-text" href="javascript:void(0);">
-                                        <img src="assets/img/icons/delete.svg" alt="img">
-                                    </a>
-                                </td>
+
                             </tr>
                             </tbody>
                         </table>
@@ -772,7 +409,83 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function () {
+    $.ajax({
+        url: '/products/all/', // Thay bằng URL endpoint của bạn
+        method: 'GET',
+        contentType: 'application/json',
+        success: function (data) {
+            const tableBody = $(".datanew tbody");
+            tableBody.empty(); // Xóa dữ liệu cũ trong bảng
 
+            data.forEach(item => {
+                const row = `
+                    <tr>
+                        <td>${item.product.productId}</td>
+                        <td>${item.product.name}</td>
+                        <td>${item.product.category.categoryName}</td>
+                        <td>${item.product.productDescription}</td>
+                        <td>${item.quantity} ${item.product.unit}</td>
+                        <td>${item.issue.receiptId}</td>
+                        <td>${item.issue.createAt}</td>
+                        <td>${item.expiryDate}</td>
+                    </tr>
+                `;
+                tableBody.append(row);
+            });
+        },
+        error: function (error) {
+            console.error("Error fetching data:", error);
+        }
+    });
+    $(document).ready(function () {
+        $(".btn-filters").click(function (e) {
+            e.preventDefault(); // Ngăn chặn hành động mặc định (nếu có)
+
+            // Lấy giá trị từ các dropdown
+            const category = $(".select").eq(0).val(); // Giá trị của dropdown 'Loại'
+            const status = $(".select").eq(1).val();   // Giá trị của dropdown 'Tình trạng'
+            const dateOrder = $(".select").eq(2).val(); // Giá trị của dropdown 'Ngày nhập'
+
+            // Tạo URL với query parameters
+            const queryParams = `category=${encodeURIComponent(category)}&status=${encodeURIComponent(status)}&dateOrder=${encodeURIComponent(dateOrder)}`;
+            const url = `/products/filter/?${queryParams}`;
+
+            // Gửi request GET
+            $.ajax({
+                url: url, // URL có query parameters
+                method: 'GET', // Phương thức GET
+                success: function (data) {
+                    const tableBody = $(".datanew tbody");
+            tableBody.empty(); // Xóa dữ liệu cũ trong bảng
+
+            data.forEach(item => {
+                const row = `
+                    <tr>
+                        <td>${item.product.productId}</td>
+                        <td>${item.product.name}</td>
+                        <td>${item.product.category.categoryName}</td>
+                        <td>${item.product.productDescription}</td>
+                        <td>${item.quantity} ${item.product.unit}</td>
+                        <td>${item.issue.receiptId}</td>
+                        <td>${item.issue.createAt}</td>
+                        <td>${item.expiryDate}</td>
+                    </tr>
+                `;
+                tableBody.append(row);
+            });
+                },
+                error: function (error) {
+                    console.error("Lỗi khi gửi dữ liệu:", error);
+                }
+            });
+        });
+    });
+
+});
+
+</script>
 
 <script src="assets/js/jquery-3.6.0.min.js"></script>
 

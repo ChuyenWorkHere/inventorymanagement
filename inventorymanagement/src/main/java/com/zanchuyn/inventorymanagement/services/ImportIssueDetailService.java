@@ -80,7 +80,8 @@ public class ImportIssueDetailService {
             Integer total = importIssueDetailRepository.getTotalQuantityByProductIdAndStatus(item.getProductId(), status);
             item.setQuantity(total == null ? 0 : total);
         });
-        return productDtos;
+        return productDtos.stream()
+                .filter(item -> item.getQuantity() > 0).toList();
     }
 
     public void saveAll(List<ImportIssueDetail> importIssueDetails) {

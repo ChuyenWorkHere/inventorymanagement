@@ -34,6 +34,8 @@ public class ExportIssueController {
         User currentUser = (User) session.getAttribute("user");
         if (currentUser == null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("/auth/");
+        } else if (currentUser.getRole().equals("QUANTRI")) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("index.html");
         } else {
             exportIssueService.addExportIssue(issueRequest, currentUser);
             return ResponseEntity.status(HttpStatus.CREATED).body("export_issue.html");

@@ -516,10 +516,11 @@
                     if (xhr.status === 401) {
                         alert('Bạn chưa đăng nhập');
                         window.location.href = xhr.responseText;
-                    } else {
-                        alert('Thêm phiếu nhập thất bại!');
+                    } else if (xhr.status === 403) {
+                        alert('Bạn không có quyền thêm phiếu');
                         window.location.href = "index.html";
-                    }
+                    } else {
+                        alert('Lỗi');}
 
                 }
             });
