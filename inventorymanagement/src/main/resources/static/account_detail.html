@@ -92,6 +92,11 @@
         button:hover {
             background-color: #45a049;
         }
+        .readonly-select {
+            pointer-events: none;
+            background-color: #e9ecef;
+            opacity: 1;
+        }
     </style>
 </head>
 
@@ -272,18 +277,19 @@
                                 <span class="user-img"><img src="assets/img/profiles/avator1.jpg" alt="">
                                     <span class="status online"></span></span>
                             <div class="profilesets">
-                                <h6>John Doe</h6>
-                                <h5>Admin</h5>
+                                <h6 id="user-name">John Doe</h6>
+                                <h5 id="user-role">Admin</h5>
                             </div>
                         </div>
                         <hr class="m-0">
-                        <a class="dropdown-item" href="profile.html"> <i class="me-2" data-feather="user"></i> My
+                        <a class="dropdown-item" href="account_detail.html"> <i class="me-2" data-feather="user"></i> My
                             Profile</a>
-                        <a class="dropdown-item" href="generalsettings.html"><i class="me-2"
-                                                                                data-feather="settings"></i>Settings</a>
+                        <a class="dropdown-item" href="change_password.html"><i class="me-2"
+                                                                                data-feather="settings"></i>Đổi mật khẩu</a>
                         <hr class="m-0">
-                        <a class="dropdown-item logout pb-0" href="signin.html"><img
-                                src="assets/img/icons/log-out.svg" class="me-2" alt="img">Logout</a>
+                        <button class="dropdown-item logout pb-0" id="logout"><img
+                                src="assets/img/icons/log-out.svg" class="me-2" alt="img">Logout
+                        </button>
                     </div>
                 </div>
             </li>
@@ -325,7 +331,7 @@
                                     </span> <span class="menu-arrow"></span></a>
                         <ul>
                             <li><a href="export_issue.html">Thêm phiếu xuất</a></li>
-                            <li><a href="accept_import.html">Duyệt phiếu xuất</a></li>
+                            <li><a href="accept_export.html">Duyệt phiếu xuất</a></li>
                             <li><a href="historic_export.html">Lịch sử phiếu xuất</a></li>
                         </ul>
                     </li>
@@ -374,7 +380,7 @@
                     <input type="text" id="phone" value="0123456789">
 
                     <label for="role">Vai trò:</label>
-                    <select class="select" id="role">
+                    <select class="select readonly-select" id="role">
                         <option value="NHANVIEN">Nhân viên</option>
                         <option value="QUANLY">Quản lý</option>
                         <option value="QUANTRI">Quản trị</option>
@@ -426,31 +432,48 @@
                     }
                 }
             });
-        }
-        console.log(employeeId);
-        $("#update").on("click", function() {
-            let formattedRole = "";
-            if($('#role').val() == "Quản trị") { formattedRole = "QUANTRI"; }
-            else if ($('#role').val() == "Quản lý"){ formattedRole = "QUANLY"; }
-            else { formattedRole = "NHANVIEN"; }
-            // Lấy dữ liệu từ các trường
-            let data = {
-                fullName: $('#name').val(),
-                phone: $('#phone').val(),
-                email: $('#email').val(),
-                role: $('#role').val()
-            };
-            // Gửi AJAX
+            $("#update").on("click", function() {
+                // Lấy dữ liệu từ các trường
+                let data = {
+                    fullName: $('#name').val(),
+                    phone: $('#phone').val(),
+                    email: $('#email').val(),
+                    role: $('#role').val()
+                };
+                // Gửi AJAX
+                $.ajax({
+                    url: '/admin/management/update/'+employeeId, // Đường dẫn backend xử lý
+                    type: 'PUT',
+                    contentType: 'application/json',
+                    data: JSON.stringify(data),
+                    success: function (response) {
+                        alert("Cập nhật thông tin thành công");
+                        window.location.href = response;
+                    },
+                    error: function (xhr, status, error) {
+                        if( xhr.status === 401 || xhr.status === 403 ) {
+                            window.location.href = xhr.responseText;
+                        } else if( xhr.status === 400) {
+                            alert(xhr.responseText);
+                        }
+                    }
+                });
+            })
+        } else {
             $.ajax({
-                url: '/admin/management/update/'+employeeId, // Đường dẫn backend xử lý
-                type: 'PUT',
-                contentType: 'application/json',
-                data: JSON.stringify(data),
-                success: function (response) {
-                    alert("Cập nhật thông tin thành công");
-                    window.location.href = response;
+                url: '/account/detail/',
+                type: 'GET',
+                success: function (data) {
+                    $("#name").val(data.fullName);
+                    $("#employee-id").val(data.userId);
+                    $("#email").val(data.email);
+                    $("#phone").val(data.phone);
+                    $("#role").val(data.role);
+                    $("#created-date").val(data.createdAt);
+                    $("#last-updated").val(data.updatedAt);
+                    $("#role").addClass("readonly-select");
                 },
-                error: function (xhr, status, error) {
+                error: function (xhr) {
                     if( xhr.status === 401 || xhr.status === 403 ) {
                         window.location.href = xhr.responseText;
                     } else if( xhr.status === 400) {
@@ -458,7 +481,35 @@
                     }
                 }
             });
-        })
+            $("#update").on("click", function() {
+                // Lấy dữ liệu từ các trường
+                let data = {
+                    fullName: $('#name').val(),
+                    phone: $('#phone').val(),
+                    email: $('#email').val(),
+                    role: $('#role').val()
+                };
+                // Gửi AJAX
+                $.ajax({
+                    url: '/account/update/', // Đường dẫn backend xử lý
+                    type: 'PUT',
+                    contentType: 'application/json',
+                    data: JSON.stringify(data),
+                    success: function (response) {
+                        alert("Cập nhật thông tin thành công");
+                        window.location.href = response;
+                    },
+                    error: function (xhr, status, error) {
+                        if( xhr.status === 401) {
+                            alert("Bạn chưa đăng nhập");
+                            window.location.href = xhr.responseText;
+                        } else if( xhr.status === 400) {
+                            alert(xhr.responseText);
+                        }
+                    }
+                });
+            })
+        }
     });
 </script>
 <script src="assets/js/jquery-3.6.0.min.js"></script>
@@ -474,7 +525,6 @@
 
 <script src="assets/plugins/apexchart/apexcharts.min.js"></script>
 <script src="assets/plugins/apexchart/chart-data.js"></script>
-
 <script src="assets/js/script.js"></script>
 <script src="assets/js/common.js"></script>
 

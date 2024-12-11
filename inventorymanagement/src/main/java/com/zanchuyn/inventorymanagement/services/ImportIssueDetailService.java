@@ -11,6 +11,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,5 +53,29 @@ public class ImportIssueDetailService {
         return importIssueDetails.stream()
                 .map(item -> mapper.map(item, ImportIssueDetailDto.class))
                 .toList();
+    }
+
+    public List<ImportIssueDetailDto> findAllDetailByStatusAndProductId(String status, Integer productId) {
+        List<ImportIssueDetail> issueDetails = importIssueDetailRepository.findAllDetailByStatusAndProductId(status, productId);
+        return issueDetails.stream()
+                .filter(item -> item.getExpiryDate().isAfter(LocalDate.now())) //Lọc những sp chưa hết hạn
+                .map(item -> mapper.map(item, ImportIssueDetailDto.class))
+                .toList();
+    }
+
+    public List<ProductDto> findAllProductByStatus(String status) {
+        List<Product> productList = importIssueDetailRepository.findAllProductByStatus(status);
+        List<ProductDto> productDtos = productList.stream()
+                .map(item -> mapper.map(item, ProductDto.class))
+                .toList();
+        productDtos.forEach(item -> {
+            Integer total = importIssueDetailRepository.getTotalQuantityByProductIdAndStatus(item.getProductId(), status);
+            item.setQuantity(total == null ? 0 : total);
+        });
+        return productDtos;
+    }
+
+    public void saveAll(List<ImportIssueDetail> importIssueDetails) {
+        this.importIssueDetailRepository.saveAll(importIssueDetails);
     }
 }

@@ -2,6 +2,7 @@ package com.zanchuyn.inventorymanagement.services;
 
 
 import com.zanchuyn.inventorymanagement.dtos.UserDto;
+import com.zanchuyn.inventorymanagement.dtos.request.PasswordRequest;
 import com.zanchuyn.inventorymanagement.dtos.request.UserRequest;
 import com.zanchuyn.inventorymanagement.entities.User;
 import com.zanchuyn.inventorymanagement.repositories.UserRepository;
@@ -74,6 +75,16 @@ public class UserService {
             return mapper.map(upadtedUser, UserDto.class);
         } else {
             return null;
+        }
+    }
+
+    public boolean updatePassword(PasswordRequest passwordRequest, User user) {
+        if (user.getPassword().equals(passwordRequest.getOldPassword())) {
+            user.setPassword(passwordRequest.getNewPassword());
+            userRepository.save(user);
+            return true;
+        } else {
+            return false;
         }
     }
 }

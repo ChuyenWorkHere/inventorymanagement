@@ -100,91 +100,6 @@
                         <span class="notification-title">Notifications</span>
                         <a href="javascript:void(0)" class="clear-noti"> Clear All </a>
                     </div>
-                    <div class="noti-content">
-                        <ul class="notification-list">
-                            <li class="notification-message">
-                                <a href="activities.html">
-                                    <div class="media d-flex">
-                                            <span class="avatar flex-shrink-0">
-                                                <img alt="" src="assets/img/profiles/avatar-02.jpg">
-                                            </span>
-                                        <div class="media-body flex-grow-1">
-                                            <p class="noti-details"><span class="noti-title">John Doe</span> added
-                                                new task <span class="noti-title">Patient appointment booking</span>
-                                            </p>
-                                            <p class="noti-time"><span class="notification-time">4 mins ago</span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="notification-message">
-                                <a href="activities.html">
-                                    <div class="media d-flex">
-                                            <span class="avatar flex-shrink-0">
-                                                <img alt="" src="assets/img/profiles/avatar-03.jpg">
-                                            </span>
-                                        <div class="media-body flex-grow-1">
-                                            <p class="noti-details"><span class="noti-title">Tarah Shropshire</span>
-                                                changed the task name <span class="noti-title">Appointment booking
-                                                        with payment gateway</span></p>
-                                            <p class="noti-time"><span class="notification-time">6 mins ago</span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="notification-message">
-                                <a href="activities.html">
-                                    <div class="media d-flex">
-                                            <span class="avatar flex-shrink-0">
-                                                <img alt="" src="assets/img/profiles/avatar-06.jpg">
-                                            </span>
-                                        <div class="media-body flex-grow-1">
-                                            <p class="noti-details"><span class="noti-title">Misty Tison</span>
-                                                added <span class="noti-title">Domenic Houston</span> and <span
-                                                        class="noti-title">Claire Mapes</span> to project <span
-                                                        class="noti-title">Doctor available module</span></p>
-                                            <p class="noti-time"><span class="notification-time">8 mins ago</span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="notification-message">
-                                <a href="activities.html">
-                                    <div class="media d-flex">
-                                            <span class="avatar flex-shrink-0">
-                                                <img alt="" src="assets/img/profiles/avatar-17.jpg">
-                                            </span>
-                                        <div class="media-body flex-grow-1">
-                                            <p class="noti-details"><span class="noti-title">Rolland Webber</span>
-                                                completed task <span class="noti-title">Patient and Doctor video
-                                                        conferencing</span></p>
-                                            <p class="noti-time"><span class="notification-time">12 mins ago</span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="notification-message">
-                                <a href="activities.html">
-                                    <div class="media d-flex">
-                                            <span class="avatar flex-shrink-0">
-                                                <img alt="" src="assets/img/profiles/avatar-13.jpg">
-                                            </span>
-                                        <div class="media-body flex-grow-1">
-                                            <p class="noti-details"><span class="noti-title">Bernardo Galaviz</span>
-                                                added new task <span class="noti-title">Private chat module</span>
-                                            </p>
-                                            <p class="noti-time"><span class="notification-time">2 days ago</span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
                     <div class="topnav-dropdown-footer">
                         <a href="activities.html">View all Notifications</a>
                     </div>
@@ -202,13 +117,15 @@
                                 <span class="user-img"><img src="assets/img/profiles/avator1.jpg" alt="">
                                     <span class="status online"></span></span>
                             <div class="profilesets">
-                                <h6>John Doe</h6>
-                                <h5>Admin</h5>
+                                <h6 id="user-name">John Doe</h6>
+                                <h5 id="user-role">Admin</h5>
                             </div>
                         </div>
                         <hr class="m-0">
                         <a class="dropdown-item" href="account_detail.html"> <i class="me-2" data-feather="user"></i> My
                             Profile</a>
+                        <a class="dropdown-item" href="change_password.html"><i class="me-2"
+                                                                                data-feather="settings"></i>Đổi mật khẩu</a>
                         <hr class="m-0">
                         <button class="dropdown-item logout pb-0" id="logout"><img
                                 src="assets/img/icons/log-out.svg" class="me-2" alt="img">Logout
@@ -254,7 +171,7 @@
                                     </span> <span class="menu-arrow"></span></a>
                         <ul>
                             <li><a href="export_issue.html">Thêm phiếu xuất</a></li>
-                            <li><a href="accept_import.html">Duyệt phiếu xuất</a></li>
+                            <li><a href="accept_export.html">Duyệt phiếu xuất</a></li>
                             <li><a href="historic_export.html">Lịch sử phiếu xuất</a></li>
                         </ul>
                     </li>

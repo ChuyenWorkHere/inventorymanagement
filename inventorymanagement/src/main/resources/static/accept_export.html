@@ -475,8 +475,8 @@
         <div class="content">
             <div class="page-header">
                 <div class="page-title">
-                    <h4>Lịch sử xuất kho</h4>
-                    <h6>Danh sách phiếu xuất</h6>
+                    <h4>Phê duyệt phiếu xuất kho</h4>
+                    <h6>Danh sách phiếu cần phê duyệt</h6>
                 </div>
             </div>
 
@@ -557,7 +557,7 @@
                             <div class="card-body">
                                 <div class="d-flex justify-content-between">
                                     <h5 class="card-title">Đơn phiếu: <span>1234</span></h5>
-                                    <a href="import_detail.html?id=12">
+                                    <a href="duyetphieu.html">
                                         <button class="btn btn-confirm"
                                                 style="background-color: rgb(100, 100, 247)">
                                             Chi tiết
@@ -580,12 +580,15 @@
                                         <strong>Trạng thái:</strong> <span>WAITING</span>
                                     </div>
                                 </div>
+
+                                <div class="d-flex justify-content-end mt-4">
+                                    <button class="btn btn-confirm">Phê duyệt</button>
+                                    <button class="btn btn-print" style="background-color: red">
+                                        Từ chối
+                                    </button>
+                                </div>
                             </div>
-
-
                         </div>
-
-
                     </div>
                 </div>
             </div>
@@ -597,7 +600,7 @@
     $(document).ready(function() {
       // Gửi yêu cầu AJAX để lấy chi tiết các lô sản phẩm từ đơn phiếu
       $.ajax({
-          url: "/management/export/history/",  // Đường dẫn API của bạn để lấy dữ liệu chi tiết đơn phiếu
+          url: "/management/export/all/",  // Đường dẫn API của bạn để lấy dữ liệu chi tiết đơn phiếu
           method: "GET",
           success: function(response) {
               var batchesContainer = $('#batches-container');
@@ -611,7 +614,7 @@
                           <div class="card-body">
                               <div class="d-flex justify-content-between">
                                   <h5 class="card-title">Đơn phiếu: ${receipt.issueId}</h5>
-                                  <a href="export_detail.html?id=${receipt.issueId}">
+                                  <a href="duyetphieu.html">
                                       <button class="btn btn-confirm" style="background-color: rgb(100, 100, 247)">
                                           Chi tiết
                                       </button>
@@ -631,6 +634,12 @@
                                       <strong>Trạng thái:</strong> <span>${receipt.status}</span>
                                   </div>
                               </div>
+                              <div class="d-flex justify-content-end mt-4">
+                                  <button class="btn btn-confirm approve-btn" data-receipt-id="${receipt.issueId}" >Phê duyệt</button>
+                                  <button class="btn btn-print reject-btn" data-receipt-id="${receipt.issueId}" style="background-color: red">
+                                      Từ chối
+                                  </button>
+                              </div>
                           </div>
                       </div>
                   `;
@@ -649,6 +658,45 @@
               }
           }
       });
+      // Khi nhấn nút Phê duyệt
+    $('#batches-container').on('click','.approve-btn', function() {
+        var receiptId = $(this).data('receipt-id'); // ID của phiếu nhập cần phê duyệt
+        var action = 'approve'; // Hành động là phê duyệt
+
+        $.ajax({
+            url: '/management/export/'+receiptId+'?action='+ action, // Địa chỉ API để xử lý phê duyệt
+            method: 'POST', // Gửi yêu cầu POST
+            contentType: 'application/json',
+            success: function(response) {
+                alert('Phiếu xuất đã được phê duyệt');
+                window.location.href = response;
+            },
+            error: function(xhr, status, error) {
+                alert(xhr.responseText);
+            }
+        });
+    });
+
+    // Khi nhấn nút Từ chối
+    $('#batches-container').on('click','.reject-btn', function() {
+        var receiptId = $(this).data('receipt-id'); // ID của phiếu nhập cần phê duyệt
+        var action = 'reject'; //
+
+        $.ajax({
+            url: '/management/export/'+receiptId+'?action='+ action, // Địa chỉ API để xử lý từ chối
+            method: 'POST', // Gửi yêu cầu POST
+            contentType: 'application/json',
+            success: function(response) {
+                alert('Phiếu xuất đã bị từ chối');
+                window.location.href = response;
+            },
+            error: function(xhr, status, error) {
+                alert('Có lỗi xảy ra khi từ chối');
+                console.error(error);
+            }
+        });
+    });
+
   });
 
 </script>

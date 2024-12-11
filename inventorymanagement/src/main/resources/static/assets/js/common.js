@@ -7,6 +7,30 @@ $(document).ready(function () {
             error: function (xhr) {
             }
     });
+    $.ajax({
+            url: '/account/detail/',
+            type: 'GET',
+            success: function (data) {
+                $('#user-name').text(data.fullName || 'Unknown User');
+
+                if(data.role === "QUANTRI"){
+                    $('#user-role').text("Quản trị viên")
+                } else if(data.role === "NHANVIEN") {
+                    $('#user-role').text("Nhân viên kho")
+                } else if (data.role === "QUANLY") {
+                    $('#user-role').text("Quản lý kho")
+                } else {
+                    $('#user-role').text("Unknown Role")
+                }
+            },
+            error: function (xhr) {
+                if(xhr.status === 401){
+                    alert("Bạn chưa đăng nhập");
+                    window.location.href = xhr.responseText;
+                }
+
+            }
+    });
     $('#logout').on('click', function () {
         console.log("Something");
         $.ajax({
@@ -22,3 +46,4 @@ $(document).ready(function () {
         });
     });
 });
+

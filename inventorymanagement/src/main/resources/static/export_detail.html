@@ -25,8 +25,25 @@
     <link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css"/>
 
     <link rel="stylesheet" href="assets/css/style.css"/>
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
+        .info-label {
+        flex: 0 0 30%;
+        text-align: left;
+        margin-right: 10px;
+        font-weight: bold;
+        font-size: 20px ;
+        color : black;
+    }
+
+    .info-value {
+        font-size: 16px;
+        color: #555;
+        flex: 0 0 65%;
+        text-align: right;
+        font-weight: normal;
+        padding-left: 10px;
+    }
         /* Định dạng tổng quan cho thẻ 'losanpham' */
         .losanpham {
             margin: 20px 0;
@@ -63,13 +80,11 @@
             border-radius: 5px;
             background-color: #f5f5f5;
         }
-
-        .sanpham {
-            margin-bottom: 5px;
+        .sanpham{
+            margin-bottom: 5px ;
         }
-
         /* Định dạng từng sản phẩm trong 'danhsachsanpham' */
-
+        
         /* Căn chỉnh cột và form */
         .thongtinlosanpham .col-lg-3,
         .thongtinlosanpham .col-sm-6,
@@ -105,16 +120,6 @@
             font-size: 14px;
             border: 1px solid #ccc;
             border-radius: 4px;
-        }
-
-        .number {
-            width: 100px;
-        }
-
-        .danhsachsanpham {
-            margin: 10px 5px;
-            max-height: 400px;
-            overflow-y: scroll;
         }
     </style>
 </head>
@@ -310,21 +315,22 @@
                 <div class="dropdown-menu menu-drop-user">
                     <div class="profilename">
                         <div class="profileset">
-                                <span class="user-img"><img src="assets/img/profiles/avator1.jpg" alt=""/>
+                                <span class="user-img"><img src="assets/img/profiles/avator1.jpg" alt="">
                                     <span class="status online"></span></span>
                             <div class="profilesets">
-                                <h6>John Doe</h6>
-                                <h5>Admin</h5>
+                                <h6 id="user-name">John Doe</h6>
+                                <h5 id="user-role">Admin</h5>
                             </div>
                         </div>
-                        <hr class="m-0"/>
-                        <a class="dropdown-item" href="profile.html">
-                            <i class="me-2" data-feather="user"></i> My Profile</a>
-                        <a class="dropdown-item" href="generalsettings.html"><i class="me-2"
-                                                                                data-feather="settings"></i>Settings</a>
-                        <hr class="m-0"/>
-                        <a class="dropdown-item logout pb-0" href="signin.html"><img
-                                src="assets/img/icons/log-out.svg" class="me-2" alt="img"/>Logout</a>
+                        <hr class="m-0">
+                        <a class="dropdown-item" href="account_detail.html"> <i class="me-2" data-feather="user"></i> My
+                            Profile</a>
+                        <a class="dropdown-item" href="change_password.html"><i class="me-2"
+                                                                                data-feather="settings"></i>Đổi mật khẩu</a>
+                        <hr class="m-0">
+                        <button class="dropdown-item logout pb-0" id="logout"><img
+                                src="assets/img/icons/log-out.svg" class="me-2" alt="img">Logout
+                        </button>
                     </div>
                 </div>
             </li>
@@ -392,153 +398,114 @@
         <div class="content">
             <div class="page-header">
                 <div class="page-title">
-                    <h4>Xuất kho</h4>
-                    <h6>Chọn danh sách xuất</h6>
+                    <h4>Chi tiết phiếu nhập</h4>
+
                 </div>
             </div>
 
             <div class="card">
                 <div class="card-body">
                     <div class="losanpham">
-                        <a>Nhập thông tin lô sản phẩm xuất:</a>
+                        <a id="maPhieuNhap">Mã Phiếu Xuất: </a>
+                        <span id="trangThai">Trạng thái: </span>
                         <div class="thongtinlosanpham">
                             <div class="col-lg-3 col-sm-6 col-12">
                                 <div class="form-group">
-                                    <label>Bên nhận :</label>
-                                    <input type="text" id="nhaPhanPhoi"/>
+                                    <label class="info-label">Người tạo đơn: <span class="info-value"
+                                                                                   id="nguoiTao"></span></label>
                                 </div>
                             </div>
                             <div class="col-lg-3 col-sm-6 col-12">
                                 <div class="form-group">
-                                    <label>Mô tả :</label>
-                                    <input type="text" id="moTa"/>
+                                    <label class="info-label">Đơn vị nhận: <span class="info-value"
+                                                                                 id="nhaCungCap"></span></label>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label class="info-label">Ngày xuất: <span class="info-value" id="ngayNhap"></span></label>
                                 </div>
                             </div>
                         </div>
-                        <a>Danh sách sản phẩm : </a>
-                        <div class="danhsachsanpham">
-                            <div class="table-responsive">
-                                <table class="table" id="product-list">
-                                    <thead>
-                                    <tr>
-                                        <th>
-                                            <label class="checkboxs">
-                                                <input type="checkbox" id="select-all">
-                                                <span class="checkmarks"></span>
-                                            </label>
-                                        </th>
-                                        <th>Mã SP</th>
-                                        <th>Tên sản phẩm</th>
-                                        <th>Mô tả</th>
-                                        <th>Loại</th>
-                                        <th>Đơn Vị</th>
-                                        <th>Số Lượng</th>
-                                        <th>Số Lượng xuất</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody id="table-product-list">
-                                    <tr>
-                                        <td>
-                                            <label class="checkboxs">
-                                                <input type="checkbox">
-                                                <span class="checkmarks"></span>
-                                            </label>
-                                        </td>
-                                        <td>
-                                            PT001
-                                        </td>
-                                        <td>Aspirin</td>
-                                        <td>Không có</td>
-                                        <td>Dược phẩm</td>
-                                        <td>Hộp</td>
-                                        <td>100</td>
-                                        <td>
-                                            <input type="number" class="number">
-                                        </td>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <a href="javascript:void(0);" onclick="xacnhan()" class="btn btn-submit">Xác nhận</a>
+                        <div style="margin-top: 20px;" class="danhsachsanpham">
+                            <span style="font-size: 20px; font-weight: bold; margin-top: 20px;">Danh sách sản phẩm: </span>
+                            <table class="table table-bordered mt-4" id="tableSanPham">
+                                <thead>
+                                <tr>
+                                    <th>Mã Sản Phẩm</th>
+                                    <th>Tên sản phẩm</th>
+                                    <th>Loại</th>
+                                    <th>Mô tả</th>
+                                    <th>Số lượng</th>
+                                    <th>Đơn vị</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <!-- Dữ liệu sẽ được thêm động vào đây -->
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function () {
-        function xacnhan() {
-            // Lấy thông tin lô hàng
-            const requestedBy = $('#nhaPhanPhoi').val();
-            const description = $('#moTa').val();
+        const urlParams = new URLSearchParams(window.location.search);
+        const id = urlParams.get('id');
+        // Gửi yêu cầu đến server để lấy dữ liệu JSON
+        $.ajax({
+            url: '/management/export/'+id, // Thay bằng URL API thực tế của bạn
+            method: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                // Điền dữ liệu vào các thành phần HTML
+                $('#maPhieuNhap').text('Mã Phiếu Nhập: ' + data.receiptId);
+                $('#trangThai').text('Trạng thái: ' + data.status);
+                $('#nguoiTao').text(data.user.fullName);
+                $('#nhaCungCap').text(data.requestedBy);
+                $('#ngayNhap').text(data.createAt);
 
-            // Lấy danh sách sản phẩm được chọn
-            const selectedProducts = [];
-            $('#product-list tr').each(function () {
-                const checkbox = $(this).find('input[type="checkbox"]');
-                if (checkbox.is(':checked')) {
-                    const productData = {
-                        productId: $(this).find('td:nth-child(2)').text().trim(), // Mã SP
-                        quantity: $(this).find('input.number').val().trim()  // Số lượng xuất
-                    };
-                    selectedProducts.push(productData);
+                // Lấy danh sách sản phẩm và điền vào bảng
+                const productList = data.importIssueDetailList;
+                const tbody = $('#tableSanPham tbody');
+                tbody.empty(); // Xóa dữ liệu cũ (nếu có)
+
+                productList.forEach(function (item) {
+                    const product = item.product;
+                    const category = product.category;
+
+                    // Tạo một hàng mới trong bảng
+                    const row = `
+                        <tr>
+                            <td>${product.productId}</td>
+                            <td>${product.name}</td>
+                            <td>${category.categoryName}</td>
+                            <td>${product.productDescription}</td>
+                            <td>${item.quantity}</td>
+                            <td>${product.unit}</td>
+                            <td>${item.expiryDate}</td>
+                            <td>${item.price.toLocaleString('vi-VN')} VNĐ</td>
+                        </tr>
+                    `;
+                    tbody.append(row); // Thêm hàng vào bảng
+                });
+            },
+            error: function (xhr, status, error) {
+                if(xhr.status === 401){
+                    alert("Bạn chưa đăng nhập");
+                    window.location.href = xhr.responseText;
+                } else if (xhr.status === 403) {
+                    alert("Bạn không có quyền ở trang này");
+                    window.location.href = xhr.responseText;
                 }
-            });
-
-            // Kiểm tra nếu không có sản phẩm nào được chọn
-            if (selectedProducts.length === 0) {
-                alert('Vui lòng chọn ít nhất một sản phẩm!');
-                return;
             }
-
-            // Dữ liệu gửi đi
-            const payload = {
-                requestedBy,
-                description,
-                exportProductRequests: selectedProducts
-            };
-
-            // Gửi yêu cầu AJAX
-            $.ajax({
-                url: '/management/export/add/',
-                method: 'POST',
-                contentType: 'application/json',
-                data: JSON.stringify(payload),
-                success: function (response) {
-                    alert('Thêm phiếu nhập thành công!');
-                    window.location.href = response;
-                },
-                error: function (xhr, status, error) {
-                    if (xhr.status === 401) {
-                        alert('Bạn chưa đăng nhập');
-                        window.location.href = xhr.responseText;
-                    } else {
-                        alert('Thêm phiếu nhập thất bại!');
-                        window.location.href = "index.html";
-                    }
-
-                }
-            });
-        }
-
-        // Gắn sự kiện click vào nút xác nhận
-        $('.btn.btn-submit').on('click', function () {
-            xacnhan();
-        });
-
-        // Tự động cập nhật danh sách sản phẩm khi checkbox "select-all" được chọn
-        $('#select-all').on('change', function () {
-            const isChecked = $(this).is(':checked');
-            $('#product-list input[type="checkbox"]').prop('checked', isChecked);
         });
     });
-
 </script>
-
 <script src="assets/js/jquery-3.6.0.min.js"></script>
 
 <script src="assets/js/feather.min.js"></script>
@@ -557,7 +524,6 @@
 
 <script src="assets/js/script.js"></script>
 <script src="assets/js/common.js"></script>
-<script src="assets/js/loadProduct.js"></script>
 </body>
 
 </html>

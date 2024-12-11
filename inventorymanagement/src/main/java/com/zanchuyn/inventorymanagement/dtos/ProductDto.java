@@ -9,10 +9,10 @@ import lombok.*;
 @AllArgsConstructor
 @ToString
 public class ProductDto {
-
     private int productId;
     private String name;
     private String productDescription;
     private String unit;
     private Category category;
+    private int quantity;
 }

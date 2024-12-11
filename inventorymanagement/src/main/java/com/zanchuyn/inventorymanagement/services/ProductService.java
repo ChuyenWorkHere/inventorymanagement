@@ -57,4 +57,7 @@ public class ProductService {
                 .anyMatch(item -> item.getName().equalsIgnoreCase(product.getName()));
     }
 
+    public Product findById(Integer id) {
+        return productRepository.findById(id).get();
+    }
 }

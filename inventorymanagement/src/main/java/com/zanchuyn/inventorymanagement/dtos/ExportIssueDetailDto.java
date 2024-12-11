@@ -1,26 +1,21 @@
 package com.zanchuyn.inventorymanagement.dtos;
 
-import com.zanchuyn.inventorymanagement.entities.ImportIssue;
+import com.zanchuyn.inventorymanagement.entities.ExportIssue;
 import com.zanchuyn.inventorymanagement.entities.Product;
 import lombok.*;
-
-import java.time.LocalDate;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class ImportIssueDetailDto {
+public class ExportIssueDetailDto {
     private Integer id;
 
     private Product product;
 
-    private ImportIssue issue;
+    private ExportIssue issue;
 
     private Integer quantity;
 
-    private LocalDate expiryDate;
-
-    private Double price;
 }
