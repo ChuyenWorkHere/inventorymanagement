@@ -63,6 +63,14 @@ public class ImportIssueDetailService {
                 .toList();
     }
 
+    public List<ImportIssueDetailDto> findAllDetailByStatusAndProductId(String status) {
+        List<ImportIssueDetail> issueDetails = importIssueDetailRepository.findAllDetailByStatusAndProductId(status);
+        return issueDetails.stream()
+                .filter(item -> item.getExpiryDate().isAfter(LocalDate.now())) //Lọc những sp chưa hết hạn
+                .map(item -> mapper.map(item, ImportIssueDetailDto.class))
+                .toList();
+    }
+
     public List<ProductDto> findAllProductByStatus(String status) {
         List<Product> productList = importIssueDetailRepository.findAllProductByStatus(status);
         List<ProductDto> productDtos = productList.stream()

@@ -147,7 +147,18 @@ public class ExportIssueService {
                 importIssueDetailService.saveAll(issueDetailList);
             }
         } else if (issue.getStatus().equals("REJECTED")) {
-            exportIssue = exportIssueRepository.save(issue);
+            List<ExportTemporary> temporaryList = this.exportTemporaryRepository.findByExportIssueId(issue.getIssueId());
+
+            for (ExportTemporary item : temporaryList) {
+                Product product = productService.findById(item.getProduct().getProductId());
+                ExportIssueDetail issueDetail = ExportIssueDetail.builder()
+                        .issue(issue)
+                        .product(product)
+                        .quantity(item.getQuantity())
+                        .build();
+
+                exportIssueDetailRepository.save(issueDetail);
+            }
         }
         return exportIssue;
     }

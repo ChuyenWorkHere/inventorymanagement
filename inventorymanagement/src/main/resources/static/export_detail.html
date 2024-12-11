@@ -463,14 +463,14 @@
             dataType: 'json',
             success: function (data) {
                 // Điền dữ liệu vào các thành phần HTML
-                $('#maPhieuNhap').text('Mã Phiếu Nhập: ' + data.receiptId);
+                $('#maPhieuNhap').text('Mã Phiếu Nhập: ' + data.issueId);
                 $('#trangThai').text('Trạng thái: ' + data.status);
                 $('#nguoiTao').text(data.user.fullName);
                 $('#nhaCungCap').text(data.requestedBy);
                 $('#ngayNhap').text(data.createAt);
 
                 // Lấy danh sách sản phẩm và điền vào bảng
-                const productList = data.importIssueDetailList;
+                const productList = data.exportIssueDetailList;
                 const tbody = $('#tableSanPham tbody');
                 tbody.empty(); // Xóa dữ liệu cũ (nếu có)
 
@@ -487,8 +487,6 @@
                             <td>${product.productDescription}</td>
                             <td>${item.quantity}</td>
                             <td>${product.unit}</td>
-                            <td>${item.expiryDate}</td>
-                            <td>${item.price.toLocaleString('vi-VN')} VNĐ</td>
                         </tr>
                     `;
                     tbody.append(row); // Thêm hàng vào bảng

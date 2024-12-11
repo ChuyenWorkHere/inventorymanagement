@@ -23,6 +23,13 @@ public interface ImportIssueDetailRepository extends JpaRepository<ImportIssueDe
     List<ImportIssueDetail> findAllDetailByStatusAndProductId(@Param("status") String status,
                                                               @Param("productId") Integer productId);
 
+    @Query("SELECT iid " +
+            "FROM ImportIssueDetail iid " +
+            "WHERE iid.issue.status = :status " +
+            "AND iid.quantity > 0 " +
+            "ORDER BY iid.expiryDate ASC")
+    List<ImportIssueDetail> findAllDetailByStatusAndProductId(@Param("status") String status);
+
     @Query("SELECT iid.product FROM ImportIssueDetail iid WHERE iid.issue.status = :status")
     List<Product> findAllProductByStatus(@Param("status") String status);
 
